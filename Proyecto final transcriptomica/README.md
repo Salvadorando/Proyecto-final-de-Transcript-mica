@@ -9,10 +9,10 @@
 Este repositorio contiene el pipeline bioinformático, el reporte y los resultados principales de nuestro análisis de Single-Cell RNA-seq para la materia de Transcriptómica. 
 
 ---
-###. Resultados Principales del Análisis
+### . Resultados Principales del Análisis
 Puedes revisar las carpetas directamente con los archivos generados:
-* 📂 [Ver carpeta con todas las Figuras del análisis](./Proyecto%20final%20transcriptomica/figure-html)
-* 📂 [Ver carpeta con Tablas de Marcadores y Resultados (outputFINAL)](./Proyecto%20final%20transcriptomica/outputFINAL)
+* 📂 [Ver carpeta con todas las Figuras del análisis](./figure-html)
+* 📂 [Ver carpeta con Tablas de Marcadores y Resultados (outputFINAL)](./outputFINAL)
 
 ---
 *Nota: Todos los códigos de los programas utilizados y sus respectivos outlogs se encuentran embebidos o enlazados dentro del reporte HTML adjunto.*
