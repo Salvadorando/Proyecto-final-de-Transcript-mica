@@ -1,0 +1,1890 @@
+---
+title: "Proyecto scRNA-seq Transcriptómica"
+author: "Valeria Sasia, Verónica Ramos & Salvador López"
+date: "28 de Mayo de 2026"
+output:
+  html_document:
+    self_contained: true
+editor: visual
+---
+
+# Transcriptómica de célula única aplicada al colon: comparación entre estados fisiológicos y patológicos
+
+### Bioproject: PRJNA1102362
+
+### Especie: Mus Musculus
+
+### Número de transcriptomas: 9 muestras
+
+### Número de réplicas biológicas: Healthy1(GSM8217725), Healthy2 (GSM8217726), Healthy3 (GSM8217727); AcuteColitis1(GSM8217728), AcuteColitis 2(GSM8217729), AcuteColitis 3(GSM8217730); ChronicColitis 1(GSM8217731), ChronicColitis 2(GSM8217732), ChronicColitis 3(GSM8217733)
+
+### Secuenciador empleado: Illumina HiSeq X Ten
+
+### Distribución de las muestras: 3 control (Healthy, HC), 3 tratamiento agudo (Acute colitis, AC), 3 tratamiento crónico (Chronic colitis, CC).Antecedentes:
+
+### Antecedentes: La colitis ulcerativa es una enfermedad inflamatoria intestinal caracterizada por una respuesta inmune desregulada en la mucosa intestinal. Los macrófagos desempeñan un papel clave en el mantenimiento de la homeostasis y en la respuesta inflamatoria, por lo que su disfunción puede contribuir al desarrollo de la enfermedad. El modelo murino inducido con dextrano sulfato de sodio (DSS) es ampliamente utilizado para estudiar los mecanismos de la colitis, ya que reproduce características relevantes de la inflamación intestinal.
+
+### La secuenciación de RNA de célula única (scRNA-seq) permite analizar la heterogeneidad celular y caracterizar subpoblaciones específicas del sistema inmune. Por otro lado, el metabarcoding del microbioma intestinal permite evaluar cambios en la composición bacteriana asociados a estados patológicos. La integración de estos enfoques permite explorar la relación entre la microbiota intestinal y la función de células inmunes, como los macrófagos, durante la progresión de la colitis inducida por DSS.##Resultados del artículo: El análisis integrativo de scRNA-seq y datos de metabarcoding del microbioma intestinal permitió identificar alteraciones en la función de los macrófagos en ratones con colitis inducida por DSS. A nivel de célula única, se observaron cambios en la expresión génica de subpoblaciones de macrófagos asociados con procesos inflamatorios y de respuesta inmune. Estos cambios reflejan una reprogramación funcional de estas células en condiciones de colitis.
+
+### Además, se detectaron diferencias entre los estados de colitis aguda y crónica, lo que sugiere que la respuesta de los macrófagos evoluciona durante la progresión de la enfermedad. En paralelo, el análisis del microbioma mostró variaciones en la composición bacteriana entre los grupos control y tratados, evidenciando una disbiosis intestinal.
+
+### La integración de ambos conjuntos de datos permitió relacionar los cambios en la microbiota con las alteraciones en la función de los macrófagos, indicando que la interacción entre ambos componentes contribuye a la fisiopatología de la colitis inducida por DSS.
+
+### Artículo científico: Hong, D., Kim, H., Yang, W., Yoon, C., Kim, M., Yang, C., & Yoon, S. (2024). Integrative analysis of single-cell RNA-seq and gut microbiome metabarcoding data elucidates macrophage dysfunction in mice with DSS-induced ulcerative colitis. Communications Biology, 7, Article 6409. (PMID: 38879692).
+
+### Diseño experimental: Se utilizó un modelo murino de colitis inducida por dextrano sulfato de sodio (DSS) en ratones Mus musculus, evaluando tres condiciones: control (día 0), colitis aguda (día 6) y colitis crónica (día 33). Se emplearon réplicas biológicas (triplicados para control y agudo, y cuadruplicados para crónico) para reducir la variabilidad experimental. A partir de tejido de colon, se aislaron células individuales y se realizó secuenciación de RNA de célula única mediante tecnología 10x Genomics. De forma complementaria, se analizó el microbioma intestinal mediante secuenciación de 16S rRNA. Finalmente, se integraron ambos conjuntos de datos para evaluar cambios celulares y microbianos durante la progresión de la colitis.
+
+### Tipo de datos del que están partiendo: En este análisis no se generó un archivo en formato HDF5 porque los datos descargados de GEO ya estaban disponibles en el formato estándar de 10X Genomics: matrix.mtx.gz, barcodes.tsv.gz y features.tsv.gz.
+
+### Resultados y discusión: Nuestro análisis reprodujo adecuadamente los principales hallazgos descritos por Hong et al. (2024), particularmente la asociación entre la progresión de la colitis inducida por DSS, la alteración de la microbiota intestinal y los cambios en la función de los macrófagos. Tanto en nuestro análisis como en el artículo se observó que la inflamación intestinal se acompaña de modificaciones importantes en las poblaciones celulares inmunes y de una disbiosis progresiva del microbioma intestinal. Sin embargo, el artículo original profundiza en mecanismos biológicos específicos que no fueron completamente explorados en nuestro análisis. Los autores identificaron una marcada disrupción de la barrera epitelial durante la colitis aguda, caracterizada por una reducción de células epiteliales y de genes asociados a uniones estrechas, seguida de una recuperación parcial durante la colitis crónica. Este fenómeno sugiere que la progresión de la enfermedad no consiste únicamente en un aumento de la inflamación, sino también en procesos de reparación tisular que ocurren simultáneamente. Además, el estudio identificó cambios dinámicos en las interacciones célula-célula. Durante la colitis aguda predominan las interacciones entre células inmunes, mientras que en la colitis crónica aumenta la comunicación entre macrófagos, células epiteliales y fibroblastos mediante ligandos y receptores específicos, incluyendo eNAMPT y componentes del complejo NOX2. Estas observaciones sugieren que los macrófagos desempeñan un papel central en el mantenimiento del estado inflamatorio crónico. Otro hallazgo importante fue la polarización progresiva de los macrófagos hacia fenotipos proinflamatorios y el incremento de la expresión de Nampt, Cybb, Cyba, Ncf1, Ncf2 y Ncf4, genes relacionados con la activación del inflamasoma NLRP3. Los autores proponen que este eje molecular contribuye significativamente a la severidad de la colitis crónica y podría representar un posible blanco terapéutico. Finalmente, el análisis del microbioma mostró que la diversidad bacteriana disminuye principalmente en la colitis crónica, acompañada por una reducción de Firmicutes y un aumento de Proteobacteria. Estos cambios se relacionan con alteraciones en la diferenciación de células T reguladoras y Th17, lo que refuerza la conexión entre disbiosis intestinal e inflamación persistente.
+
+### TRES DIFERENCIAS ENTRE NUESTROS RESULTADOS Y LOS DEL ARTÍCULO
+
+### 1. Nivel de detalle en la caracterización de macrófagos Nuestro reporte menciona alteraciones en la función de los macrófagos y cambios en su expresión génica. Sin embargo, el artículo identifica subpoblaciones específicas de macrófagos y describe una polarización hacia fenotipos M1 y M2B durante la colitis crónica, información que no fue recuperada en nuestro análisis.
+
+### 2. Análisis de las interacciones célula-célula En nuestro trabajo se discutió la relación general entre microbiota y células inmunes, pero no se reprodujo el análisis detallado de CellPhoneDB realizado por los autores. El artículo demuestra cambios específicos en las redes de comunicación celular, incluyendo interacciones entre macrófagos, fibroblastos y células epiteliales mediadas por eNAMPT y NOX2.
+
+### 3. Profundidad del análisis del microbioma Nuestro reporte identifica disbiosis intestinal y cambios en la composición bacteriana. Sin embargo, el artículo cuantifica específicamente una disminución de la diversidad microbiana en colitis crónica, una reducción de Firmicutes y un aumento de Proteobacteria, además de relacionar estos cambios con alteraciones en poblaciones de células T reguladoras y Th17. Estos resultados no fueron evaluados con el mismo nivel de detalle en nuestro análisis.
+
+# PARTE 1 Y 2: QC, NORMALIZACIÓN,REDUCCIÓN DE DIMENSIONES E INTEGRACIÓN.
+
+```{r}
+# PARTE 1: CONTROL DE CALIDAD Y NORMALIZACIÓN--
+# Cargamos librerias a utilizar
+library(Matrix) # install.packages("Matrix")
+library(hdf5r)  # install.packages("hdf5r")
+library(rhdf5)  # BiocManager::install("rhdf5")
+library(dplyr)
+library(ggplot2)
+library(patchwork)
+library(DoubletFinder) # remotes::install_github('chris-mcginnis-ucsf/DoubletFinder', force = TRUE)
+library(Seurat) ## paquete principal de este capítulo
+library(reshape2)
+
+# Nos saltamos leer la matriz de conteos porque el archivo que crea contiene 0 obs de 11 variables, es decir se leyo pero esta vacio
+# Aqui vamos a -leer- las matrices de cada uno de los archivos que estan por separado para después juntarlos todos en uno
+data.dir <- "C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/fullData3/unpacked/Normal1/"
+sample1 <- ReadMtx(mtx = paste0(data.dir, "GSM8217725_Normal1_matrix.mtx.gz"),
+                   features = paste0(data.dir, "GSM8217725_Normal1_features.tsv.gz"),
+                   cells = paste0(data.dir, "GSM8217725_Normal1_barcodes.tsv.gz"))
+
+seurat1 <- CreateSeuratObject(counts = sample1, project = "Normal1")
+
+# Repetir lo mismo para cada archivo cambiando obviamente los nombres
+data.dir <- "C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/fullData3/unpacked/Normal2/"
+sample2 <- ReadMtx(mtx = paste0(data.dir, "GSM8217726_Normal2_matrix.mtx.gz"),
+                   features = paste0(data.dir, "GSM8217726_Normal2_features.tsv.gz"),
+                   cells = paste0(data.dir, "GSM8217726_Normal2_barcodes.tsv.gz"))
+
+seurat2 <- CreateSeuratObject(counts = sample2, project = "Normal2")
+
+data.dir <- "C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/fullData3/unpacked/Normal3/"
+sample3 <- ReadMtx(mtx = paste0(data.dir, "GSM8217727_Normal3_matrix.mtx.gz"),
+                   features = paste0(data.dir, "GSM8217727_Normal3_features.tsv.gz"),
+                   cells = paste0(data.dir, "GSM8217727_Normal3_barcodes.tsv.gz"))
+
+seurat3 <- CreateSeuratObject(counts = sample3, project = "Normal3")
+
+# Muestras de colitis crónica
+data.dir <- "C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/fullData3/unpacked/ChronicC1/"
+sample4 <- ReadMtx(mtx = paste0(data.dir, "GSM8217731_ChronicColitis1_matrix.mtx.gz"),
+                   features = paste0(data.dir, "GSM8217731_ChronicColitis1_features.tsv.gz"),
+                   cells = paste0(data.dir, "GSM8217731_ChronicColitis1_barcodes.tsv.gz"))
+
+seurat4 <- CreateSeuratObject(counts = sample4, project = "Cronica1")
+
+data.dir <- "C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/fullData3/unpacked/ChronicC2/"
+sample5 <- ReadMtx(mtx = paste0(data.dir, "GSM8217732_ChronicColitis2_matrix.mtx.gz"),
+                   features = paste0(data.dir, "GSM8217732_ChronicColitis2_features.tsv.gz"),
+                   cells = paste0(data.dir, "GSM8217732_ChronicColitis2_barcodes.tsv.gz"))
+
+seurat5 <- CreateSeuratObject(counts = sample5, project = "Cronica2")
+
+data.dir <- "C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/fullData3/unpacked/ChronicC3/"
+sample6 <- ReadMtx(mtx = paste0(data.dir, "GSM8217733_ChronicColitis3_matrix.mtx.gz"),
+                   features = paste0(data.dir, "GSM8217733_ChronicColitis3_features.tsv.gz"),
+                   cells = paste0(data.dir, "GSM8217733_ChronicColitis3_barcodes.tsv.gz"))
+
+seurat6 <- CreateSeuratObject(counts = sample6, project = "Cronica3")
+
+##Muestras de colitis aguda
+data.dir <- "C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/fullData3/unpacked/Aguda1/"
+sample7 <- ReadMtx(mtx = paste0(data.dir, "GSM8217728_AcuteColitis1_matrix.mtx.gz"),
+                   features = paste0(data.dir, "GSM8217728_AcuteColitis1_features.tsv.gz"),
+                   cells = paste0(data.dir, "GSM8217728_AcuteColitis1_barcodes.tsv.gz"))
+
+seurat7 <- CreateSeuratObject(counts = sample7, project = "Aguda1")
+
+data.dir <- "C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/fullData3/unpacked/Aguda2/"
+sample8 <- ReadMtx(mtx = paste0(data.dir, "GSM8217729_AcuteColitis2_matrix.mtx.gz"),
+                   features = paste0(data.dir, "GSM8217729_AcuteColitis2_features.tsv.gz"),
+                   cells = paste0(data.dir, "GSM8217729_AcuteColitis2_barcodes.tsv.gz"))
+
+seurat8 <- CreateSeuratObject(counts = sample8, project = "Aguda2")
+
+data.dir <- "C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/fullData3/unpacked/Aguda3/"
+sample9 <- ReadMtx(mtx = paste0(data.dir, "GSM8217730_AcuteColitis3_matrix.mtx.gz"),
+                   features = paste0(data.dir, "GSM8217730_AcuteColitis3_features.tsv.gz"),
+                   cells = paste0(data.dir, "GSM8217730_AcuteColitis3_barcodes.tsv.gz"))
+
+seurat9 <- CreateSeuratObject(counts = sample9, project = "Aguda3")
+
+# Integrar todos los obejtos seurat manteniendo sus caracteristicas unicas o especificaciones algo asi
+combined <- merge(seurat1, 
+                  y = list(seurat2, seurat3, seurat4, seurat5, seurat6, seurat7, seurat8, seurat9),
+                  add.cell.ids = c("Normal1","Normal2","Normal3","Cronica1","Cronica2","Cronica3", "Aguda1", "Aguda2", "Aguda3"),
+                  project = "GSE264408")
+
+combined$group <- ifelse(
+  grepl("Normal", combined$orig.ident), "Normal",
+  ifelse(
+    grepl("Cronica", combined$orig.ident), "Cronica",
+    "Aguda"
+  )
+)
+
+# Crear columna 'group' a partir del identificador original
+combined$group <- ifelse(
+  grepl("Normal", combined$orig.ident),
+  "Normal",
+  ifelse(
+    grepl("Cronica", combined$orig.ident),
+    "Cronica",
+    "Aguda"
+  )
+)
+
+# Confirmar que se asignó correctamente
+table(combined$group)
+
+unique(combined$orig.ident)
+## Guardar para que sea reproducible: recomendación de copilot 
+saveRDS(combined, file = "combined_seurat.rds")
+
+# Si necesitamos Cargar en otra sesión
+combined <- readRDS("combined_seurat.rds")
+
+# Ordenar los datos
+combined <- merge(
+  seurat1,
+  y = list(
+    seurat2, seurat3,
+    seurat4, seurat5, seurat6,
+    seurat7, seurat8, seurat9
+  ),
+  add.cell.ids = c(
+    "Normal1", "Normal2", "Normal3",
+    "Cronica1", "Cronica2", "Cronica3",
+    "Aguda1", "Aguda2", "Aguda3"
+  ),
+  project = "GSE264408"
+)
+
+# Crear columna 'group' para agrupar por condición
+combined$group <- ifelse(
+  grepl("Normal", combined$orig.ident),
+  "Normal",
+  ifelse(
+    grepl("Cronica", combined$orig.ident),
+    "Cronica",
+    "Aguda"
+  )
+)
+
+# Confirmar que se asignó correctamente
+table(combined$group)
+
+## control de calidad intento 2 -SI FUNCIONÓ-
+# Genes mitocondriales
+combined[["percent.mt"]]   <- PercentageFeatureSet(combined, pattern = "^mt-")
+
+# Genes ribosomales
+combined[["percent.ribo"]] <- PercentageFeatureSet(combined, pattern = "^Rps|^Rpl")
+
+# Genes de hemoglobina
+combined[["percent.hb"]]   <- PercentageFeatureSet(combined, pattern = "^Hb")
+
+# Genes de plaquetas
+combined[["percent.plat"]] <- PercentageFeatureSet(combined, pattern = "Pecam1|Pf4")
+
+
+head(combined[[]])
+
+#nuevamente me marco error entonces revisar etiquetas de los genes
+head(rownames(combined))
+
+# Revisar que los genes que buscamos si esten y si hay algun cambio en la nomeclatura modificar
+grep("^mt-", rownames(combined), value = TRUE)
+grep("^MT-", rownames(combined), value = TRUE)
+grep("^Rps", rownames(combined), value = TRUE)
+grep("^Rpl", rownames(combined), value = TRUE)
+grep("^Hb", rownames(combined), value = TRUE)
+grep("Pf4", rownames(combined), value = TRUE)
+grep("Pecam1", rownames(combined), value = TRUE)
+
+# Definir las métricas que queremos visualizar
+feats <- c("nFeature_RNA", "nCount_RNA", "percent.mt", "percent.ribo", "percent.hb", "percent.plat")
+
+# Generar violin plots separados por condición (Normal vs Colitis)
+VlnPlot(combined,
+        group.by = "group",
+        features = feats,
+        pt.size = 0.1,
+        ncol = 3)
+
+VlnPlot(combined,
+        group.by = "orig.ident",
+        features = feats,
+        pt.size = 0.1,
+        ncol = 3)
+
+# Definir las métricas de QC
+feats <- c("nFeature_RNA", "nCount_RNA", "percent.mt", "percent.ribo", "percent.hb", "percent.plat")
+
+# Violin plots por réplica
+VlnPlot(combined,
+        group.by = "orig.ident",   # aquí se separa por réplica
+        features = feats,
+        pt.size = 0.1,
+        ncol = 3)
+
+# Scatter plots por réplica (orig.ident)
+plot1 <- FeatureScatter(combined,
+                        feature1 = "nCount_RNA",
+                        feature2 = "percent.mt",
+                        group.by = "orig.ident",
+                        pt.size = 0.5)
+
+plot2 <- FeatureScatter(combined,
+                        feature1 = "nCount_RNA",
+                        feature2 = "nFeature_RNA",
+                        group.by = "orig.ident",
+                        pt.size = 0.5)
+
+# Mostrar ambos juntos
+plot1 + plot2
+
+# CUANTOS genes antes de filtrar
+table(combined$orig.ident)
+
+# Primer filtrado no tenemos subset entonces se modifica
+# Filtrado de células en tu objeto combinado
+combined.filt <- subset(combined,
+                        subset = nFeature_RNA > 200 &
+                          nFeature_RNA < 2500 &
+                          percent.mt < 10 &
+                          percent.ribo < 20)
+
+
+# Ver cuántas células quedaron después del filtrado
+dim(combined.filt)
+
+combined.filt
+
+# como estan organizadas
+table(combined.filt$orig.ident)
+
+#donde estan guardadas las metricas de QC en seurat
+# Opción A
+head(combined.filt@meta.data, 5)
+
+#lecturas de cada gen
+# Calcular lecturas totales por gen en cada réplica usando AggregateExpression
+gene_totals_by_replica <- AggregateExpression(
+  combined.filt,
+  assays = "RNA",
+  slot = "counts",   # usa conteos crudos
+  group.by = "orig.ident",  # agrupa por réplica
+  return.seurat = FALSE
+)
+
+# Convertir a data.frame
+gene_totals_df <- as.data.frame(gene_totals_by_replica$RNA)
+
+# Añadir columna con nombres de genes
+gene_totals_df$gene <- rownames(gene_totals_by_replica$RNA)
+
+# Verificar estructura
+head(gene_totals_df)
+
+#top genes
+# Usar AggregateExpression para obtener totales por gen en cada réplica
+gene_totals_by_replica <- AggregateExpression(
+  combined.filt,
+  assays = "RNA",
+  slot = "counts",
+  group.by = "orig.ident",
+  return.seurat = FALSE
+)
+
+# Convertir a data.frame
+gene_totals_df <- as.data.frame(gene_totals_by_replica$RNA)
+gene_totals_df$gene <- rownames(gene_totals_by_replica$RNA)
+
+# Calcular top 10 genes en cada réplica
+top_genes <- lapply(names(gene_totals_df)[-ncol(gene_totals_df)], function(rep) {
+  # Ordenar de mayor a menor con nombres de genes
+  sorted <- gene_totals_df[order(-gene_totals_df[[rep]]), c("gene", rep)]
+  
+  # Tomar los 10 primeros
+  head(sorted, 10)
+})
+
+# Asignar nombres a la lista
+names(top_genes) <- names(gene_totals_df)[-ncol(gene_totals_df)]
+
+# Revisamos, como ejemplo: ver top 10 genes en Normal1
+top_genes$Normal1
+
+# Ejemplo en patologico: ver top 10 genes en Colitis1
+top_genes$ChronicColitis1
+
+#ahora para verlos en conjunto
+# Usar AggregateExpression para obtener totales por gen en cada réplica
+gene_totals_by_replica <- AggregateExpression(
+  combined.filt,
+  assays = "RNA",
+  slot = "counts",
+  group.by = "orig.ident",
+  return.seurat = FALSE
+)
+
+# Convertir a data.frame
+gene_totals_df <- as.data.frame(gene_totals_by_replica$RNA)
+gene_totals_df$gene <- rownames(gene_totals_by_replica$RNA)
+
+# Seleccionar los 20 genes más abundantes en todo el dataset
+top_genes_all <- head(order(rowSums(gene_totals_df[, -ncol(gene_totals_df)]), decreasing = TRUE), 20)
+
+# Crear tabla comparativa: genes × réplicas
+tabla_top <- gene_totals_df[top_genes_all, ]
+
+# Reordenar para que la columna gene quede al inicio
+tabla_top <- tabla_top[, c("gene", setdiff(names(tabla_top), "gene"))]
+
+# Ver tabla
+tabla_top
+
+## otra forma de visualizarlo
+# Totales por gen en cada réplica
+gene_totals_by_replica <- AggregateExpression(
+  combined.filt,
+  assays = "RNA",
+  slot = "counts",
+  group.by = "orig.ident",
+  return.seurat = FALSE
+)
+
+# Convertir a data.frame
+gene_totals_df <- as.data.frame(gene_totals_by_replica$RNA)
+
+# Añadir columna con nombres de genes
+gene_totals_df$gene <- rownames(gene_totals_by_replica$RNA)
+
+# Reordenar para que gene quede al inicio
+tabla_muestras <- gene_totals_df[, c("gene", setdiff(names(gene_totals_df), "gene"))]
+
+# Ver tabla completa
+head(tabla_muestras)
+
+#visualizacion umap
+# Crear data.frame largo con todos los genes y réplicas
+df_expr <- melt(
+  gene_totals_df,
+  id.vars = "gene",
+  variable.name = "dataset",
+  value.name = "counts"
+)
+
+# Filtrar solo los top genes por réplica
+df_top <- do.call(rbind, lapply(names(top_genes), function(name) {
+  data.frame(
+    dataset = name,
+    gene = top_genes[[name]]$gene,
+    counts = top_genes[[name]][[name]]
+  )
+}))
+
+# Heatmap de los top genes
+ggplot(df_top, aes(x = dataset, y = gene, fill = counts)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(low = "white", high = "red") +
+  theme_minimal() +
+  labs(title = "Lecturas totales de los top genes",
+       x = "Dataset",
+       y = "Gen")
+
+# Calcular porcentaje de células que expresan cada top gen
+#Revisar que si tengamos una columna de porcentajes
+# pero primero revisar
+colnames(df_top)
+
+# Si no lo tenemos, lo creamos
+df_top_percent <- df_top %>%
+  group_by(dataset) %>%
+  mutate(percent_counts = 100 * counts / sum(counts))
+
+head(df_top_percent)
+
+ggplot(df_top_percent, aes(x = dataset, y = gene, fill = percent_counts)) +
+  geom_tile() +
+  scale_fill_gradient(low = "lightgrey", high = "red") +
+  labs(fill = "% de genes") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+#revisamos si hay malat1
+"MALAT1" %in% rownames(sample1)
+"MALAT1" %in% rownames(sample2)
+"MALAT1" %in% rownames(sample3)
+"MALAT1" %in% rownames(sample4)
+"MALAT1" %in% rownames(sample5)
+"MALAT1" %in% rownames(sample6)
+"MALAT1" %in% rownames(sample7)
+"MALAT1" %in% rownames(sample8)
+"MALAT1" %in% rownames(sample9)
+
+#confirmamos
+# Leer el archivo de anotación (features.tsv.gz)
+features <- read.delim("C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/fullData3/unpacked/ChronicC1/GSM8217731_ChronicColitis1_features.tsv.gz", header = FALSE)
+
+# Normalmente las columnas son:
+# V1 = ID del gen (Ensembl)
+# V2 = Nombre del gen (símbolo)
+# V3 = Tipo de feature (Gene Expression, etc.)
+
+# Buscar si MALAT1 está presente
+"MALAT1" %in% features$V2
+
+#si da false entonces MALAT1 nunca estuvo en los datos
+#normalización
+colon <- NormalizeData(combined.filt, verbose = FALSE)
+
+##Guardar nuestro primer checkpoint
+#si se requiere crear una carpeta
+dir.create("outputFINAL", showWarnings = FALSE)
+#guardar
+saveRDS(colon, file = "outputFINAL/colon_scRNA_seurat_raw.rds")
+
+# PARTE 2: filtrado e integración--
+library(harmony)
+library(viridis) #Este nos va a dar una paleta de colores más adoc/formal
+
+## reproducibilidad
+set.seed(1234)
+
+## CARGAR OBJETO
+# Cargar objeto filtrado desde PARTE 1
+colon <- readRDS(
+  "C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/outputFINAL/colon_scRNA_seurat_raw.rds"
+)
+
+# Revisar contenido
+colon
+
+# Revisar metadata
+head(colon@meta.data)
+
+# Número de células por muestra
+table(colon$orig.ident)
+
+# Número de células por condición
+table(colon$group)
+
+## NORMALIZACIÓN MODERNA (SCTransform)
+# IMPORTANTE aqui cambiamos el pipeline de la clase por recomendación
+# SCTransform reemplaza:
+# - NormalizeData
+# - FindVariableFeatures
+# - ScaleData
+
+colon <- SCTransform(
+  colon,
+  vars.to.regress = "percent.mt",
+  verbose = FALSE
+)
+
+## GENES VARIABLES
+top10 <- head(VariableFeatures(colon), 10)
+
+top10
+
+# Revisar reducciones disponibles
+Reductions(colon)
+
+## calcular PCA
+colon <- RunPCA(colon) 
+## VISUALIZACIÓN PCA
+DimPlot(
+  colon,
+  reduction = "pca",
+  group.by = "orig.ident"
+) +
+  scale_color_viridis(
+    discrete = TRUE,
+    option = "D"
+  ) +
+  ggtitle("PCA por muestra")
+
+## ELBOW PLOT
+ElbowPlot(colon, ndims = 30)
+
+# IMPORTANTE:
+# Elegir PCs donde la curva empieza a estabilizarse. En datasets grandes suele ser: entre 15-30 PCs
+
+## GENES QUE CONTRIBUYEN A PCs
+VizDimLoadings(
+  colon,
+  dims = 1:20,
+  reduction = "pca"
+)
+
+# HEATMAP PCs ##OJO Hacer la ventana de PLOTS grande o dara error
+DimHeatmap(
+  colon,
+  dims = 1:20,
+  cells = 500,
+  balanced = TRUE
+)
+
+## CLUSTERING PRE-INTEGRACIÓN
+# IMPORTANTE:
+# Esto ayuda a evaluar batch effect antes de Harmony
+
+colon <- FindNeighbors(
+  colon,
+  dims = 1:20
+)
+
+colon <- FindClusters(
+  colon,
+  resolution = 0.4,
+  cluster.name = "unintegrated_clusters"
+)
+
+## UMAP PRE-INTEGRACIÓN
+colon <- RunUMAP(
+  colon,
+  dims = 1:20,
+  reduction = "pca",
+  verbose = FALSE
+)
+
+## VISUALIZACIÓN PRE-INTEGRACIÓN
+# Por muestra
+DimPlot(
+  colon,
+  reduction = "umap",
+  group.by = "orig.ident"
+)
+
+# Por condición
+DimPlot(
+  colon,
+  reduction = "umap",
+  group.by = "group"
+)
+
+# Por clusters
+DimPlot(
+  colon,
+  reduction = "umap",
+  group.by = "unintegrated_clusters",
+  label = TRUE
+)
+
+## EVALUAR BATCH EFFECT
+# IMPORTANTE. Antes de Harmony revisar: las muestras están separadas?, hay mezcla parcial?, las condiciones dominan el clustering?
+wrap_plots(
+  DimPlot(
+    colon,
+    reduction = "pca",
+    group.by = "orig.ident"
+  ) + NoAxes() + ggtitle("PCA antes de integración"),
+  
+  DimPlot(
+    colon,
+    reduction = "umap",
+    group.by = "orig.ident"
+  ) + NoAxes() + ggtitle("UMAP antes de integración"),
+  
+  ncol = 2
+)
+
+## INTEGRACIÓN CON HARMONY. IMPORTANTE: Harmony corrige batch effects
+# pero puede sobrecorregir si usamos demasiadas PCs o datasets muy distintos biológicamente
+colon <- IntegrateLayers(
+  object = colon,
+  method = HarmonyIntegration,
+  orig.reduction = "pca",
+  new.reduction = "harmony",
+  verbose = FALSE
+)
+
+## CLUSTERING INTEGRADO
+colon <- FindNeighbors(
+  colon,
+  reduction = "harmony",
+  dims = 1:20,
+  graph.name = "harmony_snn"
+)
+
+colon <- FindClusters(
+  colon,
+  graph.name = "harmony_snn",
+  resolution = 0.4
+)
+
+## UMAP INTEGRADO
+colon <- RunUMAP(
+  colon,
+  reduction = "harmony",
+  dims = 1:20,
+  reduction.name = "umap.harmony",
+  reduction.key = "UMAPH_",
+  verbose = FALSE
+)
+
+## VISUALIZACIÓN POST-INTEGRACIÓN
+# Por muestra
+DimPlot(
+  colon,
+  reduction = "umap.harmony",
+  group.by = "orig.ident"
+)
+
+# Por condición biológica
+DimPlot(
+  colon,
+  reduction = "umap.harmony",
+  group.by = "group"
+)
+
+# Por clusters
+DimPlot(
+  colon,
+  reduction = "umap.harmony",
+  group.by = "seurat_clusters",
+  label = TRUE
+)
+
+## SPLIT BY CONDITION
+# Ayuda a visualizar infiltración y cambios celulares
+
+DimPlot(
+  colon,
+  reduction = "umap.harmony",
+  split.by = "group"
+)
+
+## COMPARACIÓN ANTES VS DESPUÉS no tan necesaria
+
+wrap_plots(
+  
+  # Antes de integración
+  DimPlot(
+    colon,
+    reduction = "pca",
+    group.by = "orig.ident"
+  ) + NoAxes() + ggtitle("PCA pre-Harmony"),
+  
+  DimPlot(
+    colon,
+    reduction = "umap",
+    group.by = "orig.ident"
+  ) + NoAxes() + ggtitle("UMAP pre-Harmony"),
+  
+  # Después de integración
+  DimPlot(
+    colon,
+    reduction = "harmony",
+    group.by = "orig.ident"
+  ) + NoAxes() + ggtitle("Harmony reduction"),
+  
+  DimPlot(
+    colon,
+    reduction = "umap.harmony",
+    group.by = "orig.ident"
+  ) + NoAxes() + ggtitle("UMAP post-Harmony"),
+  
+  ncol = 2
+)
+
+## NÚMERO DE CLUSTERS
+length(unique(Idents(colon)))
+
+## VISUALIZACIÓN FINAL
+DimPlot(
+  colon,
+  reduction = "umap.harmony",
+  label = TRUE,
+  repel = TRUE
+)
+
+## GUARDAR OBJETO
+saveRDS(
+  colon,
+  file = "outputFINAL/colon_integrated.rds"
+)
+
+## SESSION INFO recomendacion BP
+## =========================================================
+sessionInfo()
+## =========================================================
+```
+
+# PARTE 3: BIOMARCADORES Y ANOTACIONES CELULARES
+
+```{r}
+# Me salio un error entonces instaalamos esto con las librerias iniciales asi que agregamos 
+# las faltantes. El error decia algo de Scraper
+BiocManager::install(
+  c(
+    "SingleR",
+    "celldex",
+    "scran",
+    "scater",
+    "SingleCellExperiment"
+  ),
+  ask = FALSE,
+  force = TRUE
+)
+
+#Cargar librerias
+library(Seurat)
+library(tidyverse)
+library(patchwork)
+library(SingleCellExperiment)
+library(SingleR)
+library(celldex)
+library(scran)
+library(scater)
+
+## CARGAR OBJETO
+colon <- readRDS(
+  "C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/outputFINAL/colon_integrated.rds"
+)
+
+colon
+
+## REVISAR ASSAYS Y LAYERS
+Assays(colon)
+
+DefaultAssay(colon)
+
+Layers(colon[["RNA"]])
+
+## IMPORTANTE PARA SEURAT V5
+# IMPORTANTE:
+# FindMarkers y FindAllMarkers requieren
+# una layer global "data"
+
+# Unir las capas del assay RNA
+DefaultAssay(colon) <- "RNA"
+
+colon[["RNA"]] <- JoinLayers(colon[["RNA"]])
+
+# Verificar layers después de unir
+Layers(colon[["RNA"]])
+
+## IDENTIDADES ACTIVAS
+Idents(colon) <- "seurat_clusters"
+
+# Número de células por cluster
+table(Idents(colon))
+
+# Número de células por muestra
+table(colon$orig.ident)
+
+# Número de células por condición
+table(colon$group)
+
+## EXPRESIÓN DIFERENCIAL / MARKERS
+# IMPORTANTE:
+# RNA assay para DE
+# SCT/Harmony solo para clustering e integración
+
+DefaultAssay(colon) <- "RNA"
+
+markers_genes <- FindAllMarkers(
+  colon,
+  assay = "RNA",
+  only.pos = TRUE,
+  test.use = "wilcox",
+  logfc.threshold = 0.25,
+  min.pct = 0.25
+)
+
+## REVISAR RESULTADOS
+head(markers_genes)
+
+colnames(markers_genes)
+
+dim(markers_genes)
+
+## TABLA INTERACTIVA
+markers_genes %>%
+  group_by(cluster) %>%
+  arrange(desc(avg_log2FC)) %>%
+  DT::datatable()
+
+# Exportar marcadores
+write.csv(
+  markers_genes,
+  "outputFINAL/cluster_markers.csv",
+  row.names = FALSE
+)
+
+## TOP 10 GENES POR CLUSTER
+top10 <- markers_genes %>%
+  group_by(cluster) %>%
+  slice_max(
+    order_by = avg_log2FC,
+    n = 10,
+    with_ties = FALSE
+  )
+
+top10
+
+## BARPLOTS DE GENES MARCADORES
+par(mfrow = c(3, 4), mar = c(4, 8, 3, 1))
+
+for(i in unique(top10$cluster)) {
+  
+  genes_cluster <- top10 %>%
+    filter(cluster == i)
+  
+  barplot(
+    sort(
+      setNames(
+        genes_cluster$avg_log2FC,
+        genes_cluster$gene
+      ),
+      decreasing = TRUE
+    ),
+    horiz = TRUE,
+    las = 1,
+    main = paste("Cluster", i),
+    border = "white",
+    xlab = "avg_log2FC"
+  )
+}
+
+## HEATMAP DE MARCADORES
+# Top 5 genes por cluster
+top5 <- markers_genes %>%
+  group_by(cluster) %>%
+  slice_max(
+    order_by = avg_log2FC,
+    n = 5,
+    with_ties = FALSE
+  )
+
+# IMPORTANTE: ScaleData SOLO para visualización
+colon <- ScaleData(
+  colon,
+  features = unique(top5$gene),
+  assay = "RNA"
+)
+
+# Heatmap
+DoHeatmap(
+  colon,
+  features = unique(top5$gene),
+  group.by = "seurat_clusters",
+  assay = "RNA"
+)
+
+## DOTPLOT DE MARCADORES
+DotPlot(
+  colon,
+  features = rev(unique(top5$gene)),
+  group.by = "seurat_clusters",
+  assay = "RNA"
+) +
+  coord_flip() +
+  RotatedAxis()
+
+## VIOLIN PLOTS
+#cambie de top 3 a top 5
+top <- markers_genes %>%
+  group_by(cluster) %>%
+  slice_max(
+    order_by = avg_log2FC,
+    n = 5,
+    with_ties = FALSE
+  )
+
+VlnPlot(
+  colon,
+  features = unique(top5$gene),
+  group.by = "seurat_clusters",
+  assay = "RNA",
+  pt.size = 0,
+  ncol = 4
+)
+
+## FEATURE PLOTS — GENES CANÓNICOS---Recomendación ya que en el pipeline guía 
+# me daba un error
+FeaturePlot(
+  colon,
+  features = c(
+    "Epcam",
+    "Krt19",
+    "Cd3d",
+    "Cd79a",
+    "Lyz2",
+    "Adgre1",
+    "Col1a1",
+    "Pecam1"
+  ),
+  reduction = "umap.harmony",
+  cols = c("lightgrey", "red"),
+  ncol = 4
+)
+
+##Voy a quitar la conversion a singleR porque me salia un error en paquete scrapper que no se pudo corregir
+# ni instalando los paquetes "faltantes"
+##ALTERNATIVA ANOTACIÓN MANUAL que ya tenemos una parte abajo
+## VALIDACIÓN MANUAL
+canonical_genes <- c(
+  
+  # Epiteliales
+  "Epcam",
+  "Krt8",
+  "Krt19",
+  
+  # T cells
+  "Cd3d",
+  "Cd3e",
+  
+  # B cells
+  "Cd79a",
+  "Ms4a1",
+  
+  # Macrófagos
+  "Lyz2",
+  "Adgre1",
+  
+  # Fibroblastos
+  "Col1a1",
+  "Col1a2",
+  "Dcn",
+  
+  # Endoteliales
+  "Pecam1",
+  "Kdr"
+)
+
+DotPlot(
+  colon,
+  features = canonical_genes,
+  group.by = "seurat_clusters",
+  cols = c("blue", "red"),
+  dot.scale = 8
+) +
+  RotatedAxis()
+
+## Validamos
+FeaturePlot(
+  colon,
+  features = canonical_genes,
+  reduction = "umap.harmony",
+  cols = c("lightgrey", "red"),
+  ncol = 4
+)
+
+##ESTO SERÍA LO EXTRA PARA LAS ANOTACIONES que no hicimos con singleR
+##revisamos la dot plot e interpretamos
+#revisamos el orden
+levels(colon)
+##Renombramos
+new.cluster.ids <- c(
+  "Vascular Endothelial",  # Cluster 0
+  "T Cells",              # Cluster 1
+  "Macrophages",          # Cluster 2
+  "Fibroblasts",          # Cluster 3
+  "B Cells",              # Cluster 4
+  "Stromal Fibroblasts",  # Cluster 5
+  "NK Lymphocytes",       # Cluster 6 
+  "Smooth Muscle Cells",  # Cluster 7 
+  "Mature Colonocytes",   # Cluster 8
+  "Vascular Endothelial",  # Cluster 9
+  "Stem Cells",           # Cluster 10 
+  "Active Fibroblast",    # Cluster 11 
+  "Unknown"   #Cluster que salio de quien sabe donde
+)
+
+# Asignamos los nuevos nombres a las identidades del objeto
+names(new.cluster.ids) <- levels(colon)
+colon <- RenameIdents(colon, new.cluster.ids)
+DimPlot(colon, label = TRUE)
+
+annotation_df <- data.frame(
+  cluster = names(new.cluster.ids),
+  cell_type = new.cluster.ids
+)
+
+write.csv(
+  annotation_df,
+  "celltype_annotation.csv",
+  row.names = FALSE
+)
+
+## GENES CONSERVADOS
+Idents(colon) <- "seurat_clusters"
+
+conserved_markers <- FindConservedMarkers(
+  colon,
+  ident.1 = 0,
+  grouping.var = "orig.ident",
+  assay = "RNA"
+)
+
+head(conserved_markers)
+
+## TOP CONSERVED MARKERS
+top_conserved <- conserved_markers %>%
+  rownames_to_column("gene") %>%
+  arrange(max_pval) %>%
+  slice_head(n = 20)
+
+top_conserved
+
+## DOTPLOT CONSERVED MARKERS
+DotPlot(
+  colon,
+  features = top_conserved$gene,
+  group.by = "seurat_clusters"
+) +
+  RotatedAxis()
+
+## Para visualizar por condición
+DimPlot(
+  colon,
+  reduction = "umap.harmony",
+  split.by = "group"
+)
+
+## GUARDAR OBJETO FINAL
+saveRDS(
+  colon,
+  file = "outputFINAL/colon_annotated.rds"
+)
+
+## SESSION INFO
+sessionInfo()
+```
+
+# PARTE 4: EXPRESIÓN DIFERENCIAL POR CONDICIONES
+
+```{r}
+library(Seurat)
+library(tidyverse)
+library(patchwork)
+library(edgeR)
+library(viridis)
+library(RColorBrewer)
+
+## CARGAR OBJETO ANOTADO
+colon <- readRDS(
+  "C:/Users/veror/OneDrive/Desktop/Tarea1scRNA/outputFINAL/colon_annotated.rds"
+)
+
+colon
+
+## VERIFICAmos assays
+Assays(colon)
+
+DefaultAssay(colon) <- "RNA"
+
+Layers(colon[["RNA"]])
+
+## IDENTIDADES ACTIVAS
+# IMPORTANTE:
+# usar anotación manual
+
+Idents(colon) <- "celltype"
+
+# Revisar número de células
+table(Idents(colon))
+
+# Revisar muestras
+table(colon$orig.ident)
+
+# Revisar condiciones
+table(colon$group)
+
+## COMPOSICIÓN CELULAR
+# Conteos absolutos
+Idents(colon) <- "seurat_clusters"
+levels(colon)
+colon <- RenameIdents(
+  colon,
+  "0" = "Vascular Endothelial",
+  "1" = "T Cells",
+  "2" = "Macrophages",
+  "3" = "Fibroblasts",
+  "4" = "B Cells",
+  "5" = "Stromal Fibroblasts",
+  "6" = "NK Lymphocytes",
+  "7" = "Smooth Muscle Cells",
+  "8" = "Mature Colonocytes",
+  "9" = "Vascular Endothelial",
+  "10" = "Stem Cells",
+  "11" = "Active Fibroblasts"
+)
+
+colon$celltype <- Idents(colon)
+
+table(colon$celltype, colon$group)
+
+# Proporciones
+prop.table(
+  table(colon$celltype, colon$group),
+  margin = 2
+)
+
+## VISUALIZACIÓN DE COMPOSICIÓN
+# Barras apiladas
+ggplot(
+  colon@meta.data,
+  aes(x = group, fill = celltype)
+) +
+  geom_bar(position = "fill") +
+  scale_fill_viridis(discrete = TRUE) +
+  ylab("Proporción") +
+  theme_classic()
+
+# Por muestra
+ggplot(
+  colon@meta.data,
+  aes(x = orig.ident, fill = celltype)
+) +
+  geom_bar(position = "fill") +
+  scale_fill_viridis(discrete = TRUE) +
+  theme_classic() +
+  theme(
+    axis.text.x = element_text(
+      angle = 45,
+      hjust = 1
+    )
+  )
+
+## VISUALIZACIÓN UMAP
+wrap_plots(
+  
+  DimPlot(
+    colon,
+    reduction = "umap.harmony",
+    group.by = "celltype",
+    label = TRUE,
+    repel = TRUE
+  ) +
+    NoAxes(),
+  
+  DimPlot(
+    colon,
+    reduction = "umap.harmony",
+    group.by = "group"
+  ) +
+    NoAxes(),
+  
+  ncol = 2
+)
+
+## SPLIT POR CONDICIÓN
+DimPlot(
+  colon,
+  reduction = "umap.harmony",
+  split.by = "group",
+  group.by = "celltype",
+  label = TRUE
+)
+
+## GENES BIOLÓGICAMENTE IMPORTANTES
+FeaturePlot(
+  colon,
+  features = c(
+    "Il1b",
+    "Tnf",
+    "Cxcl2",
+    "Muc2",
+    "Lyz2",
+    "Epcam"
+  ),
+  reduction = "umap.harmony",
+  cols = c("lightgrey", "red"),
+  ncol = 3
+)
+
+
+# Genes de ciclo celular incluidos en Seurat
+cc.genes <- Seurat::cc.genes.updated.2019
+
+# Revisar algunos genes
+head(cc.genes$s.genes)
+head(cc.genes$g2m.genes)
+
+## =========================================================
+## SCORING DEL CICLO CELULAR
+## =========================================================
+
+colon <- CellCycleScoring(
+  colon,
+  s.features = cc.genes$s.genes,
+  g2m.features = cc.genes$g2m.genes,
+  set.ident = FALSE
+)
+
+## =========================================================
+## VERIFICACIONES
+## =========================================================
+
+# Número de células por muestra
+table(colon$orig.ident)
+
+# Número de células por fase
+table(colon$Phase)
+
+## =========================================================
+## VISUALIZACIÓN DE SCORES
+## =========================================================
+
+VlnPlot(
+  colon,
+  features = c(
+    "S.Score",
+    "G2M.Score"
+  ),
+  group.by = "orig.ident",
+  ncol = 2,
+  pt.size = 0.1
+)
+
+## =========================================================
+## FEATURE PLOTS
+## =========================================================
+
+FeaturePlot(
+  colon,
+  features = c(
+    "S.Score",
+    "G2M.Score"
+  ),
+  reduction = "umap.harmony",
+  label = FALSE
+) &
+  theme(
+    plot.title = element_text(size = 10)
+  )
+
+## =========================================================
+## FASES CELULARES EN UMAP
+## =========================================================
+
+DimPlot(
+  colon,
+  reduction = "umap.harmony",
+  group.by = "Phase"
+)
+
+## =========================================================
+## RELACIÓN ENTRE SCORES
+## =========================================================
+
+FeatureScatter(
+  colon,
+  feature1 = "S.Score",
+  feature2 = "G2M.Score",
+  group.by = "Phase"
+)
+
+##Resultado 0.34. IMPORTANTE: En este análisis NO se observó separación marcada
+## impulsada por proliferación celular, por lo que
+## la regresión del ciclo celular NO se utilizó
+## para los análisis downstream finales.
+
+# PSEUDOBULK REAL: MULTI-CONDICIÓN (Normal vs Aguda vs Cronica)
+# Asegurarse de que el diseño biológico base incluye todas las muestras
+metadata_diseno <- colon@meta.data %>%
+  distinct(orig.ident, group)
+
+# DEFINICIÓN DE LA FUNCIÓN MULTI-CONDICIÓN (ANOVA-like GLM) esto por sugerencia
+run_pseudobulk_multi <- function(obj, celltype_name, meta_df) {
+  
+  message("=== Procesando de forma pseudo-bulk completo: ", celltype_name, " ===")
+  
+  # Filtrar el objeto Seurat para el tipo celular (esta vez entran las 3 condiciones)
+  obj_sub <- subset(obj, celltype == celltype_name)
+  
+  # Control de calidad preventivo
+  if (length(unique(obj_sub$orig.ident)) < 3) {
+    message("⚠️ Saltado: Insuficientes muestras totales para ", celltype_name)
+    return(NULL)
+  }
+  
+  # Colapsar/Agregar cuentas de ARN por MUESTRA
+  pb_counts <- AggregateExpression(
+    obj_sub,
+    group.by = "orig.ident",
+    assays = "RNA",
+    return.seurat = FALSE
+  )$RNA
+  
+  # Alinear el diseño con las columnas reales del bulk
+  samples_in_pb <- colnames(pb_counts)
+  meta_pb <- data.frame(orig.ident = samples_in_pb) %>%
+    left_join(meta_df, by = "orig.ident")
+  
+  # Definir el factor con los 3 niveles experimentales
+  condicion <- factor(meta_pb$group, levels = c("Normal", "Aguda", "Cronica"))
+  
+  # Inicializar el objeto DGEList de edgeR
+  dge <- DGEList(counts = pb_counts, group = condicion)
+  
+  # Filtrar genes con conteos bajos
+  keep <- filterByExpr(dge, group = condicion)
+  dge <- dge[keep, , keep.lib.sizes = FALSE]
+  
+  # Calcular factores de normalización
+  dge <- calcNormFactors(dge)
+  
+  # construir Matriz de diseño expandida para 3 grupos
+  # Esto nos dará 3 columnas: (Intercept), condicionAguda, condicionCronica
+  design <- model.matrix(~ condicion)
+  colnames(design) <- c("Intercept", "Aguda", "Cronica")
+  
+  # Estimar dispersiones moleculares
+  dge <- estimateDisp(dge, design)
+  
+  # Ajustar el modelo estadístico Quasi-Likelihood de edgeR
+  fit <- glmQLFit(dge, design)
+  
+  # CRUCIAL: Evaluamos los coeficientes 2 y 3 al mismo tiempo (coef = 2:3)
+  # Esto equivale a un ANOVA; busca genes que cambien en Aguda O en Cronica respecto a Normal
+  res <- glmQLFTest(fit, coef = 2:3)
+  
+  # Extraer la tabla de resultados completa
+  top_table <- topTags(res, n = Inf)$table
+  
+  # Rescatar nombres de los genes y anotar el linaje
+  top_table$genes <- rownames(top_table)
+  top_table$celltype <- celltype_name
+  
+  return(list(results = top_table, dge = dge))
+}
+
+# EJECUCIÓN EN BUCLE (LOOP) 
+cell_types <- unique(colon$celltype)
+pseudobulk_results <- list()
+
+for(ct in cell_types) {
+  if(is.na(ct) | ct == "Other") next
+  
+  res_out <- run_pseudobulk_multi(colon, ct, metadata_diseno)
+  if(!is.null(res_out)) {
+    pseudobulk_results[[ct]] <- res_out
+  }
+}
+
+# CONSTRUCCIÓN Y ORDENAMIENTO DE LA TABLA RESUMEN
+nombres_celulas <- names(pseudobulk_results)
+conteos_degs <- sapply(pseudobulk_results, function(x) {
+  # En pruebas multi-coeficiente evaluamos significancia mediante el p-valor ajustado (FDR)
+  sum(x$results$FDR < 0.05, na.rm = TRUE)
+})
+
+deg_summary <- data.frame(
+  celltype = as.character(nombres_celulas),
+  n_DEGs = as.numeric(conteos_degs),
+  stringsAsFactors = FALSE
+)
+
+deg_summary_ordenado <- deg_summary[order(deg_summary$n_DEGs, decreasing = TRUE), ]
+print(deg_summary_ordenado)
+
+## DETECTAR EL MEJOR TIPO CELULAR Y VISUALIZAR RESULTADOS (MULTI-CONDICIÓN)
+# Identificar automáticamente cuál población celular tuvo más genes alterados
+best_celltype <- deg_summary_ordenado$celltype[1]
+message("\nGenerando gráficos para el linaje celular con mayor respuesta: ", best_celltype)
+
+# Extraer los resultados de ese tipo celular específico
+best_res <- pseudobulk_results[[best_celltype]]$results
+
+# Clasificar los genes según su significancia estadística global (FDR)
+best_res <- best_res %>%
+  mutate(Significancia = case_when(
+    FDR < 0.05 ~ "Cambio Significativo",
+    TRUE       ~ "No Significativo"
+  ))
+
+# GRÁFICO 1: Gráfico de dispersión de Expresión (Aguda vs Crónica)
+# Esto te permite ver qué genes se encienden en la inflamación rápida vs la persistente
+ggplot(best_res, aes(x = logFC.Aguda, y = logFC.Cronica, color = Significancia)) +
+  geom_point(alpha = 0.7, size = 1.5) +
+  scale_color_manual(values = c("red", "lightgrey")) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "darkgray") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "darkgray") +
+  theme_classic() +
+  labs(
+    title = paste("Dinámica de Expresión en", best_celltype),
+    subtitle = "Comparación de Cambios: Aguda vs Crónica respecto a Normal",
+    x = "Log2 Fold Change (Aguda vs Normal)",
+    y = "Log2 Fold Change (Crónica vs Normal)"
+  )
+
+# 4. EXTRAER TOP 3 GENES PARA VALIDACIÓN EN CÉLULAS INDIVIDUALES
+# Buscamos los genes con el FDR global más bajo (los más significativos del ANOVA)
+top_genes_validar <- best_res %>%
+  filter(FDR < 0.05) %>%
+  arrange(FDR) %>%
+  head(3)
+
+# GRÁFICO 2: Violin Plot para ver la transición temporal de los mejores genes
+if (nrow(top_genes_validar) > 0) {
+  message("Genes seleccionados para validar en Violines:")
+  print(top_genes_validar[, c("genes", "FDR")])
+  
+  # Forzar el orden de los violines en el gráfico: Normal -> Aguda -> Cronica
+  obj_grafico <- subset(colon, celltype == best_celltype)
+  obj_grafico$group <- factor(obj_grafico$group, levels = c("Normal", "Aguda", "Cronica"))
+  
+  VlnPlot(
+    obj_grafico,
+    features = top_genes_validar$genes,
+    group.by = "group",
+    ncol = 3,
+    pt.size = 0.1
+  ) & theme_bw() & labs(x = "Evolución de la Enfermedad")
+} else {
+  message("⚠️ No se encontraron genes con FDR < 0.05 para graficar violines.")
+}
+
+## GUARDADO FINAL DE VARIABLES Y DATOS
+# Guardar espacio de trabajo de expresión diferencial
+save(
+  pseudobulk_results, 
+  deg_summary_ordenado, 
+  file = "outputC/variables_DE_completo_3condiciones.RData"
+)
+
+# Guardar el objeto Seurat con las nuevas identidades (celulas renombradas)
+saveRDS(colon, file = "outputC/colon_annotated_v2.rds")
+
+## EXTRACCIÓN AUTOMATIZADA DE TOP GENES Y DOTPLOT (ADAPTADO A 3 CONDICIONES)
+# Definir qué tipo celular quieres inspeccionar (por ejemplo, el que tuvo más DEGs)
+# Se puede cambiar best_celltype por el nombre de cualquier cluster entre comillas, ej: "Macrophages"
+target_celltype <- best_celltype 
+
+# Extraer la tabla completa de resultados de edgeR para esa célula
+res.edgeR <- pseudobulk_results[[target_celltype]]$results
+
+# Clasificar la dirección biológica principal de los genes significativos
+# Como tenemos 3 condiciones, evaluamos dónde muestran mayor magnitud de cambio (Fold Change)
+res.edgeR_clasificado <- res.edgeR %>%
+  filter(FDR < 0.05) %>%  # Nos quedamos únicamente con genes estadísticamente significativos
+  mutate(dir = case_when(
+    logFC.Aguda > 0.5  & logFC.Aguda > logFC.Cronica   ~ "Top_Aguda",
+    logFC.Cronica > 0.5 & logFC.Cronica > logFC.Aguda ~ "Top_Cronica",
+    logFC.Aguda < -0.5 & logFC.Cronica < -0.5          ~ "Down_Ambas",
+    TRUE                                               ~ "Otros_Cambios"
+  ))
+
+# Seleccionar los 10 genes con el FDR más bajo (más confiables) por cada dirección
+top.edgeR <- res.edgeR_clasificado %>%
+  group_by(dir) %>%
+  top_n(10, wt = -FDR) %>%  # El signo menos asegura buscar el FDR más pequeño hacia 0
+  arrange(dir)
+
+# Imprimir en consola los genes seleccionados para que veas cuáles son antes del gráfico
+message("Genes seleccionados para el DotPlot de ", target_celltype, ":")
+print(top.edgeR[, c("genes", "dir", "FDR")])
+
+# Generar el DotPlot en las células individuales de ese linaje específico
+# Extraemos el subset de células de interés
+cell_selection <- subset(colon, celltype == target_celltype)
+
+# Aseguramos el orden biológico de las muestras en el eje del gráfico
+cell_selection$orig.ident <- factor(
+  cell_selection$orig.ident, 
+  levels = c("Normal1", "Normal2", "Normal3", "Aguda1", "Aguda2", "Aguda3", "Cronica1", "Cronica2", "Cronica3")
+)
+
+# Visualización. DOTPLOT MÁS LIMPIO Y LEGIBLE PARA HTML
+# Seleccionar únicamente los genes más relevantes (evita saturación visual)
+genes_plot <- top.edgeR %>%
+  group_by(dir) %>%
+  slice_min(FDR, n = 5, with_ties = FALSE) %>% 
+  pull(genes) %>%
+  unique()
+
+# Ordenar muestras manualmente
+cell_selection$orig.ident <- factor(
+  cell_selection$orig.ident,
+  levels = c(
+    "Normal1","Normal2","Normal3",
+    "Aguda1","Aguda2","Aguda3",
+    "Cronica1","Cronica2","Cronica3"
+  )
+)
+
+# DotPlot optimizado
+DotPlot(
+  cell_selection,
+  features = rev(genes_plot),   # invertir para mejor lectura
+  group.by = "orig.ident",
+  assay = "RNA",
+  dot.scale = 5                 # puntos más pequeños
+) +
+  
+  coord_flip() +
+  
+  scale_color_viridis(
+    option = "plasma",
+    name = "Expresión\npromedio"
+  ) +
+  
+  labs(
+    title = paste(
+      "Top genes relevantes (edgeR pseudobulk) -",
+      target_celltype
+    ),
+    x = "Muestra",
+    y = "Genes"
+  ) +
+  
+  theme_bw(base_size = 12) +
+  
+  theme(
+    
+    # título
+    plot.title = element_text(
+      hjust = 0.5,
+      face = "bold",
+      size = 14
+    ),
+    
+    # genes
+    axis.text.y = element_text(
+      size = 9
+    ),
+    
+    # muestras
+    axis.text.x = element_text(
+      angle = 45,
+      hjust = 1,
+      size = 9
+    ),
+    
+    # leyendas
+    legend.title = element_text(size = 10),
+    legend.text = element_text(size = 8),
+    
+    # márgenes
+    plot.margin = margin(10, 15, 10, 10)
+    
+  )
+
+## DOTPLOT OPTIMIZADO PARA FIBROBLASTOS
+# 1. Definir tipo celular objetivo
+target_celltype <- "Fibroblasts"
+# 2. Extraer resultados edgeR
+res.edgeR <- pseudobulk_results[[target_celltype]]$results
+# 3. Clasificar genes según patrón biológico
+res.edgeR_clasificado <- res.edgeR %>%
+  
+  filter(FDR < 0.05) %>%
+  
+  mutate(
+    dir = case_when(
+      
+      logFC.Aguda > 0.5 &
+        logFC.Aguda > logFC.Cronica
+      ~ "Top_Aguda",
+      
+      logFC.Cronica > 0.5 &
+        logFC.Cronica > logFC.Aguda
+      ~ "Top_Cronica",
+      
+      logFC.Aguda < -0.5 &
+        logFC.Cronica < -0.5
+      ~ "Down_Ambas",
+      
+      TRUE
+      ~ "Otros_Cambios"
+    )
+  )
+
+# REDUCIR NÚMERO DE GENES
+# Seleccionar únicamente los 5 genes más representativos
+# por categoría
+
+top.edgeR <- res.edgeR_clasificado %>%
+  
+  group_by(dir) %>%
+  
+  slice_min(
+    order_by = FDR,
+    n = 5,
+    with_ties = FALSE
+  ) %>%
+  
+  arrange(dir)
+
+# Mostrar genes seleccionados
+message("Genes de fibroblastos seleccionados:")
+
+print(
+  top.edgeR[, c("genes", "dir", "FDR")]
+)
+
+# SUBSET DE CÉLULAS
+cell_selection <- subset(
+  colon,
+  celltype == target_celltype
+)
+
+# Orden biológico correcto
+cell_selection$orig.ident <- factor(
+  
+  cell_selection$orig.ident,
+  
+  levels = c(
+    "Normal1", "Normal2", "Normal3",
+    "Aguda1", "Aguda2", "Aguda3",
+    "Cronica1", "Cronica2", "Cronica3"
+  )
+)
+
+# DOTPLOT LIMPIO Y LEGIBLE
+DotPlot(
+  
+  cell_selection,
+  
+  features = rev(unique(top.edgeR$genes)),
+  
+  group.by = "orig.ident",
+  
+  assay = "RNA",
+  
+  dot.scale = 5
+  
+) +
+  
+  coord_flip() +
+  
+  scale_color_viridis(
+    option = "plasma",
+    name = "Expresión\npromedio"
+  ) +
+  
+  labs(
+    
+    title = paste(
+      "Genes diferencialmente expresados en",
+      target_celltype
+    ),
+    
+    subtitle = "Análisis pseudobulk con edgeR",
+    
+    x = "Muestra",
+    
+    y = "Genes"
+  ) +
+  
+  theme_bw(base_size = 12) +
+  
+  theme(
+    
+    # título principal
+    plot.title = element_text(
+      hjust = 0.5,
+      face = "bold",
+      size = 14
+    ),
+    
+    # subtítulo
+    plot.subtitle = element_text(
+      hjust = 0.5,
+      size = 11
+    ),
+    
+    # nombres de genes
+    axis.text.y = element_text(
+      size = 9
+    ),
+    
+    # nombres muestras
+    axis.text.x = element_text(
+      angle = 45,
+      hjust = 1,
+      size = 9
+    ),
+    
+    # leyendas
+    legend.title = element_text(size = 10),
+    legend.text = element_text(size = 8),
+    
+    # espacio
+    plot.margin = margin(
+      10, 15, 10, 10
+    )
+    
+  )
+
+## DOTPLOT OPTIMIZADO PARA MACRÓFAGOS
+# 1. Definir tipo celular objetivo
+target_celltype <- "Macrophages"
+# 2. Extraer resultados edgeR
+res.edgeR <- pseudobulk_results[[target_celltype]]$results
+# 3. Clasificar genes según patrón biológico
+res.edgeR_clasificado <- res.edgeR %>%
+  
+  filter(FDR < 0.05) %>%
+  
+  mutate(
+    dir = case_when(
+      
+      logFC.Aguda > 0.5 &
+        logFC.Aguda > logFC.Cronica
+      ~ "Top_Aguda",
+      
+      logFC.Cronica > 0.5 &
+        logFC.Cronica > logFC.Aguda
+      ~ "Top_Cronica",
+      
+      logFC.Aguda < -0.5 &
+        logFC.Cronica < -0.5
+      ~ "Down_Ambas",
+      
+      TRUE
+      ~ "Otros_Cambios"
+    )
+  )
+
+# SELECCIONAR GENES MÁS REPRESENTATIVOS
+top.edgeR <- res.edgeR_clasificado %>%
+  
+  group_by(dir) %>%
+  
+  slice_min(
+    order_by = FDR,
+    n = 5,
+    with_ties = FALSE
+  ) %>%
+  
+  arrange(dir)
+
+# Mostrar genes seleccionados
+message("Genes de macrófagos seleccionados:")
+
+print(
+  top.edgeR[, c("genes", "dir", "FDR")]
+)
+
+# SUBSET DE CÉLULAS
+cell_selection <- subset(
+  colon,
+  celltype == target_celltype
+)
+
+# Orden temporal correcto
+cell_selection$orig.ident <- factor(
+  
+  cell_selection$orig.ident,
+  
+  levels = c(
+    "Normal1", "Normal2", "Normal3",
+    "Aguda1", "Aguda2", "Aguda3",
+    "Cronica1", "Cronica2", "Cronica3"
+  )
+)
+
+# DOTPLOT FINAL
+DotPlot(
+  
+  cell_selection,
+  
+  features = rev(unique(top.edgeR$genes)),
+  
+  group.by = "orig.ident",
+  
+  assay = "RNA",
+  
+  dot.scale = 5
+  
+) +
+  
+  coord_flip() +
+  
+  scale_color_viridis(
+    option = "plasma",
+    name = "Expresión\npromedio"
+  ) +
+  
+  labs(
+    
+    title = paste(
+      "Genes diferencialmente expresados en",
+      target_celltype
+    ),
+    
+    subtitle = "Análisis pseudobulk con edgeR",
+    
+    x = "Muestra",
+    
+    y = "Genes"
+  ) +
+  
+  theme_bw(base_size = 12) +
+  
+  theme(
+    
+    plot.title = element_text(
+      hjust = 0.5,
+      face = "bold",
+      size = 14
+    ),
+    
+    plot.subtitle = element_text(
+      hjust = 0.5,
+      size = 11
+    ),
+    
+    axis.text.y = element_text(
+      size = 9
+    ),
+    
+    axis.text.x = element_text(
+      angle = 45,
+      hjust = 1,
+      size = 9
+    ),
+    
+    legend.title = element_text(size = 10),
+    legend.text = element_text(size = 8),
+    
+    plot.margin = margin(
+      10, 15, 10, 10
+    )
+    
+  )
+
+# Guardar espacio de trabajo de expresión diferencial
+save(
+  pseudobulk_results, 
+  deg_summary_ordenado, 
+  file = "outputFINAL/variables_DE_completo_3condicionesF.RData"
+)
+
+# Guardar el objeto Seurat con las nuevas identidades (celulas renombradas)
+saveRDS(colon, file = "outputFINAL/colon_annotated_v2F.rds")
+## SESSION INFO recomendacion BP
+## =========================================================
+sessionInfo()
+## =========================================================
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
