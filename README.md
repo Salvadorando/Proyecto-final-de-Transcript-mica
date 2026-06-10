@@ -14,7 +14,7 @@ Este repositorio contiene el pipeline bioinformático, el reporte y los resultad
 
 ### 1. Reporte Dinámico e Interactivo
 * **Código Fuente:** [Proyecto_scRNA_entregable_final.Rmd](./Proyecto%20final%20transcriptomica/Proyecto_scRNA_entregable_final.Rmd)
-* **Visualización del Reporte:** 🚀 [Haz clic aquí para ver el reporte interactivo completo en HTML](https://salvadorando.github.io/Proyecto-final-de-Transcript-mica/Proyecto%20final%20transcriptomica/Proyecto_scRNA_entregable_final.html)
+* **Visualización del Reporte:** 🚀 [Haz clic aquí para ver el reporte interactivo completo en HTML](https://htmlpreview.github.io/?https://github.com/Salvadorando/Proyecto-final-de-Transcript-mica/blob/main/Proyecto%20final%20transcriptomica/Proyecto_scRNA_entregable_final.html)
 
 ### 2. Resultados Principales del Análisis
 Puedes revisar las carpetas directamente con los archivos generados:
